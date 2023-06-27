@@ -13,7 +13,7 @@ build:
   number: 0
   entry_points:
     - poetry-dynamic-versioning = poetry_dynamic_versioning.__main__:main
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vvv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   skip: True  # [py<37]
 
 requirements:
