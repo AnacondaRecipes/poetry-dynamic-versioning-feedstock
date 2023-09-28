@@ -10,7 +10,7 @@ source:
   sha256: c540fde6e9e334ec3b0f14f57f8467076d8d76ed0d503a89db9f91e59fd5d6f9
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - poetry-dynamic-versioning = poetry_dynamic_versioning.__main__:main
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
@@ -19,7 +19,7 @@ build:
 requirements:
   host:
     - pip
-    - poetry-core 1.5.1
+    - poetry-core 1.5
     - python
     - setuptools
     - wheel
