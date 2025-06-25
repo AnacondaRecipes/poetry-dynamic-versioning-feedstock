@@ -1,20 +1,20 @@
 {% set name = "poetry-dynamic-versioning" %}
-{% set version = "0.23.0" %}
+{% set version = "1.8.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: c540fde6e9e334ec3b0f14f57f8467076d8d76ed0d503a89db9f91e59fd5d6f9
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: d14de13d426ac28e98f4519aac7f4aa857e7b97ad9d7a4c72293377033065f44
 
 build:
   number: 0
   entry_points:
     - poetry-dynamic-versioning = poetry_dynamic_versioning.__main__:main
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  skip: True  # [py<37]
+  skip: true  # [py<37]
 
 requirements:
   host:
