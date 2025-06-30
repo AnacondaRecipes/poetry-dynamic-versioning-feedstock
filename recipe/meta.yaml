@@ -17,14 +17,15 @@ build:
   skip: true  # [py<37]
 
 requirements:
+  build:
+    - poetry-core 1.5.1
   host:
     - pip
-    - poetry-core 1.5.1
     - python
     - setuptools
     - wheel
   run:
-    - dunamai >=1.17.0,<2.0.0
+    - dunamai >=1.23.0
     - jinja2 >=2.11.1,<4
     - python
     - tomlkit >=0.4
