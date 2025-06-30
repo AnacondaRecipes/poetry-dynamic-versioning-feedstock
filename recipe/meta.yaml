@@ -17,9 +17,11 @@ build:
   skip: true  # [py<37]
 
 requirements:
-  build:
-    - poetry-core 1.5.1
   host:
+    # poetry-core required in host instead of build because it's the PEP 517 backend.
+    # pip with --no-build-isolation imports poetry.core.masonry.api from host env.
+    # Needed to avoid "BackendUnavailable: Cannot import 'poetry.core.masonry.api'" error.
+    - poetry-core
     - pip
     - python
     - setuptools
