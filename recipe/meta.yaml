@@ -10,7 +10,7 @@ source:
   sha256: d14de13d426ac28e98f4519aac7f4aa857e7b97ad9d7a4c72293377033065f44
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - poetry-dynamic-versioning = poetry_dynamic_versioning.__main__:main
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
