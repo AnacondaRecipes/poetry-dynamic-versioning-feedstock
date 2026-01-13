@@ -1,16 +1,16 @@
 {% set name = "poetry-dynamic-versioning" %}
-{% set version = "1.8.2" %}
+{% set version = "1.9.1" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: d14de13d426ac28e98f4519aac7f4aa857e7b97ad9d7a4c72293377033065f44
+  sha256: d6e7b9df817aa2ca4946cd695c6c89e1379d2e6c640f008a9b6170d081a9da48
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - poetry-dynamic-versioning = poetry_dynamic_versioning.__main__:main
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
@@ -18,30 +18,27 @@ build:
 
 requirements:
   host:
-    # poetry-core required in host instead of build because it's the PEP 517 backend.
-    # pip with --no-build-isolation imports poetry.core.masonry.api from host env.
-    # Needed to avoid "BackendUnavailable: Cannot import 'poetry.core.masonry.api'" error.
-    - poetry-core
     - pip
     - python
     - setuptools
     - wheel
+    - poetry-core >=1.0.0
   run:
-    - dunamai >=1.23.0
-    - jinja2 >=2.11.1,<4
     - python
+    - dunamai >=1.25.0,<2
     - tomlkit >=0.4
+    - jinja2 >=2.11.1,<4
   run_constrained:
     - poetry >=1.2.0,<2
 
 test:
   imports:
     - poetry_dynamic_versioning
-  requires:
-    - pip
   commands:
     - pip check
     - poetry-dynamic-versioning --help
+  requires:
+    - pip
 
 about:
   home: https://github.com/mtkennerly/poetry-dynamic-versioning
